@@ -8,12 +8,12 @@
         update_cache: yes   
 
     - name: Build Docker Image
-      command: docker build -t petstore .
+      command: docker build -t demo .
       args:
         chdir: /var/lib/jenkins/workspace/demo
 
     - name: tag image
-      command: docker tag petstore:latest akshayphadke/petstore:latest 
+      command: docker tag petstore:latest akshayphadke/demo:latest 
 
     - name: Log in to Docker Hub
       community.docker.docker_login:
@@ -22,7 +22,7 @@
         password: dockerhub Akshayphadke@123
 
     - name: Push image
-      command: docker push akshayphadke/petstore:latest
+      command: docker push akshayphadke/demo:latest
 
     - name: Run container
-      command: docker run -d --name pet1 -p 8081:8080 akshayphadke/petstore:latest
+      command: docker run -d --name pet1 -p 8081:8080 akshayphadke/demo:latest
