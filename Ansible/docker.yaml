@@ -14,8 +14,5 @@
 
     - name: tag image
       command: docker tag demo:latest  
-
-  
-
-     - name: Run container
+    - name: Run container
       command: docker run -d --name pet1 -p 8081:8080 demo:latest
