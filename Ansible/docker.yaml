@@ -13,12 +13,9 @@
         chdir: /var/lib/jenkins/workspace/demo
 
     - name: tag image
-      command: docker tag petstore:latest akshayphadke/demo:latest 
+      command: docker tag demo:latest  
 
   
 
-    - name: Push image
-      command: docker push akshayphadke/demo:latest
-
-    - name: Run container
-      command: docker run -d --name pet1 -p 8081:8080 akshayphadke/demo:latest
+     - name: Run container
+      command: docker run -d --name pet1 -p 8081:8080 demo:latest
