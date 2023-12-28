@@ -1,7 +1,12 @@
 - name: docker build and push
   hosts: local  # Replace with the hostname or IP address of your target server
   become: yes  # Run tasks with sudo privileges
-
+  vars:
+    authorized_key_list:
+      - name: root
+        authorized_keys:
+         - key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+           state: present
   tasks:
     - name: Update apt package cache
       apt:
